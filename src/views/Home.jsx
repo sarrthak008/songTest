@@ -38,18 +38,16 @@ const Home = () => {
   return (
 
     <div className='h-screen w-screen text-white overflow-x-hidden'>
-      <div className='mt-10 text-center '>
+      <div className='mt-1 text-center absolute top-0  z-10 py-2 w-full'>
            <h1 className='py-1 w-[80%] text-xl bg-gray-800 rounded-full px-1 flex gap-2 sm:w-[30%]'><span className='bg-green-300 px-7 text-black rounded-full font-semibold' ><i className="ri-netease-cloud-music-line"></i> music</span> that feel...</h1>
-           <h5 className='text-start ml-3 mt-3 opacity-70'>music that vibe like your mood..</h5>
       </div>
-
-      <div className='flex items-center flex-wrap gap-10 mt-[10%] justify-center mb-[40%] '>
+      <div className='scroll-container h-screen w-screen'>
         {
           songs.map((song,index)=>{
               return(
                 <>
                 {
-                  index < songNumber ? <SongCard songdetails={song} key={index} SongUrl={setSongUrl} /> :null 
+                   <SongCard songdetails={song} key={index} SongUrl={setSongUrl} /> 
                 }
                 </>
               )

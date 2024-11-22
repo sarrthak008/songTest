@@ -20,3 +20,19 @@ html,body{
 .img-shadow{
     filter: drop-shadow(2px 2px 20px #ffffff86);
 }
+
+.scroll-container {
+  overflow-y: scroll;
+  height: 100vh;
+  scroll-snap-type: y mandatory;
+  gap: 4vh;
+}
+
+.section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 100vh;
+  scroll-snap-align: center;
+}
