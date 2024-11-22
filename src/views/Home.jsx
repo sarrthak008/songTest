@@ -41,7 +41,7 @@ const Home = () => {
       <div className='mt-1 text-center absolute top-0  z-10 py-2 w-full'>
            <h1 className='py-1 w-[80%] text-xl bg-gray-800 rounded-full px-1 flex gap-2 sm:w-[30%]'><span className='bg-green-300 px-7 text-black rounded-full font-semibold' ><i className="ri-netease-cloud-music-line"></i> music</span> that feel...</h1>
       </div>
-      <div className='scroll-container h-screen w-screen'>
+      <div className='scroll-container h-screen w-screen transition-all'>
         {
           songs.map((song,index)=>{
               return(
