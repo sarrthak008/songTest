@@ -61,7 +61,7 @@ const CommnetBox = ({ openComent, id }) => {
                             </div>
                         )
                     })}
-                <div className='bottom-0 absolute left-0 bg-[#323232] w-full h-14 flex items-center opacity-75 gap-2'>
+                <div className='bottom-10 absolute left-0 bg-[#323232] w-full h-14 flex items-center opacity-75 gap-2'>
                     <input className='bg-gray-500 outline-none w-[80%] px-1 py-2  text-white text-xl' placeholder='enter your comment' value={newCommetn.content} onChange={(e) => setNewComment({ ...newCommetn, content: e.target.value })} ></input>
                     <button onClick={() => addcomment()}><i className="ri-send-plane-fill text-[#86efac] text-3xl"></i></button>
                 </div>
