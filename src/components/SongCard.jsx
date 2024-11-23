@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import axios from 'axios';
 const apiUrl = import.meta.env.VITE_API_URL;
+import LikeAnimation from './LikeAnimation';
 
 
 const SongCard = ({ songdetails, SongUrl }) => {
@@ -9,7 +10,7 @@ const SongCard = ({ songdetails, SongUrl }) => {
 
   const [isSongPlay, setSongPlay] = useState(false)
   const [isSonglike, setLike] = useState(like)
-
+  const [likeAnimation,setLikeAnimation] = useState(false)
 
   const handlePlayPause = () => {
     SongUrl({ song_url, name })
@@ -20,12 +21,18 @@ const SongCard = ({ songdetails, SongUrl }) => {
     try {
       const responce = await axios.patch(`${apiUrl}/like/${id}`)
       setLike(responce?.data?.result)
+      playLikeAnimation()
     } catch (error) {
       console.log(error)
     }
   }
 
-
+ const playLikeAnimation =  () =>{
+  setLikeAnimation(true)
+    setTimeout(() => {
+       setLikeAnimation(false)
+    }, 3500)
+ } 
 
   return (
     <div className='h-full w-full bg-gray-800 rounded-lg overflow-hidden section relative' onClick={handlePlayPause}>
@@ -47,6 +54,7 @@ const SongCard = ({ songdetails, SongUrl }) => {
       <div className='h-12 w-full absolute bottom-14 text-xl opacity-80 ml-3 line-clamp-1'>
         {name}
       </div>
+      {likeAnimation ? <LikeAnimation/> :null }
     </div>
   )
 }
