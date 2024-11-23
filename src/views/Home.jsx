@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios';
 const apiUrl = import.meta.env.VITE_API_URL;
-import HEADPHONE from "../assets/headphone.png"
-import { AudioPlayer } from 'react-audio-play';
 import SongCard from '../components/SongCard.jsx'
 import Player from '../components/Player.jsx';
 
@@ -17,7 +15,6 @@ const Home = () => {
     try {
       const responce = await axios.get(`${apiUrl}/songs`)
       setSongs(responce.data.data)
-      console.log(responce)
     } catch (error) {
       console.log(error)
     }

@@ -1,16 +1,30 @@
-import React,{useState} from 'react'
-import Player from './Player'
+import React, { useState } from 'react'
+import axios from 'axios';
+const apiUrl = import.meta.env.VITE_API_URL;
 
-const SongCard = ({ songdetails, SongUrl}) => {
 
-  let { name, poster, song_url } = songdetails
-  const [isSongPlay,setSongPlay] = useState(false)
+const SongCard = ({ songdetails, SongUrl }) => {
+
+  let { name, poster, song_url, like, id } = songdetails
+
+  const [isSongPlay, setSongPlay] = useState(false)
+  const [isSonglike, setLike] = useState(like)
+
 
   const handlePlayPause = () => {
-     SongUrl({song_url ,name})
-     setSongPlay(true);
+    SongUrl({ song_url, name })
+    setSongPlay(true);
   };
-  
+
+  const likeSong = async () => {
+    try {
+      const responce = await axios.patch(`${apiUrl}/like/${id}`)
+      setLike(responce?.data?.result)
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
 
 
   return (
@@ -20,12 +34,18 @@ const SongCard = ({ songdetails, SongUrl}) => {
         <div className='cover absolute top-0 left-0 h-full w-full bg-gradient-to-t from-black  '></div>
       </div>
       <div className='h-full w-14  absolute top-0 right-0 bg-gradient-to-l from-black flex items-center justify-end flex-col gap-6 pb-[40%]'>
-          <i className="ri-heart-3-line text-4xl opacity-75"></i>
-          <i className="ri-chat-1-line text-4xl opacity-75"></i>
-          <i className="ri-share-line text-4xl opacity-75"></i>
+        {isSonglike ? <i className="ri-heart-3-fill text-4xl opacity-75 text-[#86EFAC]" onClick={(e) => {
+          e.stopPropagation()
+          likeSong()
+        }}></i> : <i className="ri-heart-3-line text-4xl opacity-75" onClick={(e) => {
+          e.stopPropagation()
+          likeSong()
+        }}></i>}
+        <i className="ri-chat-1-line text-4xl opacity-75"></i>
+        <i className="ri-share-line text-4xl opacity-75"></i>
       </div>
       <div className='h-12 w-full absolute bottom-14 text-xl opacity-80 ml-3 line-clamp-1'>
-          {name}
+        {name}
       </div>
     </div>
   )
