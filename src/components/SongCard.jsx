@@ -2,15 +2,17 @@ import React, { useState } from 'react'
 import axios from 'axios';
 const apiUrl = import.meta.env.VITE_API_URL;
 import LikeAnimation from './LikeAnimation';
+import CommnetBox from './CommnetBox';
 
 
 const SongCard = ({ songdetails, SongUrl }) => {
 
-  let { name, poster, song_url, like, id } = songdetails
+  let { name, poster, song_url, like, id ,comment} = songdetails
 
   const [isSongPlay, setSongPlay] = useState(false)
   const [isSonglike, setLike] = useState(like)
   const [likeAnimation,setLikeAnimation] = useState(false)
+  const [isCommentOpen,setOpenComment] =useState(false)
 
   const handlePlayPause = () => {
     SongUrl({ song_url, name })
@@ -48,13 +50,17 @@ const SongCard = ({ songdetails, SongUrl }) => {
           e.stopPropagation()
           likeSong()
         }}></i>}
-        <i className="ri-chat-1-line text-4xl opacity-75"></i>
+        <i className="ri-chat-1-line text-4xl opacity-75" onClick={(e)=>{
+          e.stopPropagation()
+          setOpenComment(true)
+          }}></i>
         <i className="ri-share-line text-4xl opacity-75"></i>
       </div>
       <div className='h-12 w-full absolute bottom-14 text-xl opacity-80 ml-3 line-clamp-1'>
         {name}
       </div>
       {likeAnimation ? <LikeAnimation/> :null }
+      {isCommentOpen?<CommnetBox comments={comment} openComent={setOpenComment} id={id}/>:null}
     </div>
   )
 }
