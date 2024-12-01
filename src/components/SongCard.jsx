@@ -3,6 +3,7 @@ import axios from 'axios';
 const apiUrl = import.meta.env.VITE_API_URL;
 import LikeAnimation from './LikeAnimation';
 import CommnetBox from './CommnetBox';
+import Toast from 'light-toast' 
 
 
 const SongCard = ({ songdetails, SongUrl }) => {
@@ -37,14 +38,11 @@ const SongCard = ({ songdetails, SongUrl }) => {
  } 
 
  const handelShare =()=>{
-   if(navigator.canShare()){
-     navigator.share({
-       title:"hello",
-       text:"hello",
-       url:"https://example.com"
-     })
-   }else{
-    navigator.clipboard.writeText("helllo")
+   try {
+  
+    navigator.clipboard.writeText(`listen these layrics that melt your heart \n ${like}`).then(Toast.success('link copy to click board ',2000))
+   } catch (error) {
+    
    }
  }
 
