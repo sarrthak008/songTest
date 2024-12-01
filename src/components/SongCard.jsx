@@ -36,6 +36,18 @@ const SongCard = ({ songdetails, SongUrl }) => {
     }, 3500)
  } 
 
+ const handelShare =()=>{
+   if(navigator.canShare()){
+     navigator.share({
+       title:"hello",
+       text:"hello",
+       url:"https://example.com"
+     })
+   }else{
+    navigator.clipboard.writeText("helllo")
+   }
+ }
+
   return (
     <div className='h-full w-full bg-gray-800 rounded-lg overflow-hidden section relative' onClick={handlePlayPause}>
       <div className='h-[100%] w-full overflow-hidden relative'>
@@ -54,7 +66,12 @@ const SongCard = ({ songdetails, SongUrl }) => {
           e.stopPropagation()
           setOpenComment(true)
           }}></i>
-        <i className="ri-share-line text-4xl opacity-75"></i>
+        <i className="ri-share-line text-4xl opacity-75"
+         onClick={(e)=>{
+           e.stopPropagation(),
+           handelShare()
+         }}
+        ></i>
       </div>
       <div className='h-12 w-full absolute bottom-14 text-xl opacity-80 ml-3 line-clamp-1'>
         {name}
