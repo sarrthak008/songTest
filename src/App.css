@@ -36,3 +36,6 @@ html,body{
   height: 100vh;
   scroll-snap-align: center;
 }
+.scroll-container::-webkit-scrollbar,body::-webkit-scrollbar{
+  display: none;
+}
