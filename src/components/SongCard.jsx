@@ -52,19 +52,19 @@ const SongCard = ({ songdetails, SongUrl }) => {
         <img src={poster} className='h-full w-full object-cover ' />
         <div className='cover absolute top-0 left-0 h-full w-full bg-gradient-to-t from-black  '></div>
       </div>
-      <div className='h-full w-14  absolute top-0 right-0 bg-gradient-to-l from-black flex items-center justify-end flex-col gap-6 pb-[40%]'>
+      <div className='h-full w-14  absolute top-0 right-0 bg-gradient-to-l from-black flex items-center justify-end flex-col gap-6 pb-[40%] sm:gap-11'>
         {isSonglike ? <i className="ri-heart-3-fill text-4xl opacity-75 text-[#86EFAC]" onClick={(e) => {
           e.stopPropagation()
           likeSong()
-        }}></i> : <i className="ri-heart-3-line text-4xl opacity-75" onClick={(e) => {
+        }}></i> : <i className="ri-heart-3-line text-4xl opacity-75 cursor-pointer" onClick={(e) => {
           e.stopPropagation()
           likeSong()
         }}></i>}
-        <i className="ri-chat-1-line text-4xl opacity-75" onClick={(e)=>{
+        <i className="ri-chat-1-line text-4xl opacity-75 cursor-pointer" onClick={(e)=>{
           e.stopPropagation()
           setOpenComment(true)
           }}></i>
-        <i className="ri-share-line text-4xl opacity-75"
+        <i className="ri-share-line text-4xl opacity-75 cursor-pointer"
          onClick={(e)=>{
            e.stopPropagation(),
            handelShare()
