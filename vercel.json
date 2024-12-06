@@ -2,8 +2,11 @@
     "redirects": [
       {
         "source": "/old-url",
-        "destination": "/new-url",
-        "permanent": true
+        "destination": "/new-url"
+      },
+      {
+        "source": "/new-url",
+        "destination": "/another-url"
       }
     ]
   }
