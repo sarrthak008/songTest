@@ -39,7 +39,7 @@ const SongCard = ({ songdetails, SongUrl }) => {
  const handelShare =()=>{
 
    try {
-    navigator.clipboard.writeText(`listen these layrics that melt your heart \n ${like}`).then(Toast.success('link copy to click board ',2000))
+    navigator.clipboard.writeText(`listen these layrics that melt your heart ${window.location}song/${id}`).then(Toast.success('song URL copied to clickBoard'),2000)
    } catch (error) {
     Toast.fail("something went wrong..")
    }

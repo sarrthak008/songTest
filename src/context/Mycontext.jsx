@@ -4,9 +4,10 @@ const SongContext = createContext()
 
 const SongContextProvider = ({children}) =>{
 
+    const [songurl,setSongUrl] = useState(null)
 
     return(
-        <SongContext.Provider>
+        <SongContext.Provider value={{songurl,setSongUrl}}>
             {children}
         </SongContext.Provider>
     )
