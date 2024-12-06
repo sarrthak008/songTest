@@ -22,8 +22,6 @@ const Home = () => {
     loadSongs()
   }, [])
 
-
-
   return (
 
     <div className='h-screen w-screen text-white overflow-x-hidden'>

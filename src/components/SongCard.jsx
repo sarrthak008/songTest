@@ -9,7 +9,6 @@ import Toast from 'light-toast'
 const SongCard = ({ songdetails, SongUrl }) => {
 
   let { name, poster, song_url, like, id ,comment} = songdetails
-
   const [isSongPlay, setSongPlay] = useState(false)
   const [isSonglike, setLike] = useState(like)
   const [likeAnimation,setLikeAnimation] = useState(false)
